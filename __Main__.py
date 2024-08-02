@@ -191,7 +191,7 @@ async def handle_audio(client, message):
     if not await is_user_member(client, user_id):
         join_buttons = InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton(get_message(user_id, "join_channel"), url=f"https://t.me/{CHANNEL_USERNAME[1]}")],
+                [InlineKeyboardButton(get_message(user_id, "join_channel"), url=f"https://t.me/{CHANNEL_USERNAME.lstrip('@')}")],
                 [InlineKeyboardButton(get_message(user_id, "check_membership"), callback_data="check_membership")]
             ]
         )
