@@ -78,6 +78,14 @@ This is a simple Telegram bot built using the Pyrogram library. The bot allows u
 
    - [Download FFmpeg here](https://ffmpeg.org/download.html).
 
+4. **Channel Setup:**
+   - You need to set the `CHANNEL_USERNAME` to your desired channel's username, formatted as `"@your_channel_username"` (e.g., `"@amirabbas_jadidi"`).
+   - Make sure to add the bot as an admin to the channel so that it can check user membership properly.
+
+5. **Project Updates:**
+   - Future updates to this project may include new features. Additionally, the mandatory join to the channel will become optional, allowing you to disable it if desired.
+
+
 ### user_languages.example.json
 
 The `user_languages.json` file is used by the bot to store the preferred language of each user. The actual file is created automatically by the bot when users set their language preferences. To help you understand the structure, we provide a sample file named `user_languages.example.json`:
