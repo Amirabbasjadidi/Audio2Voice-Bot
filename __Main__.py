@@ -19,6 +19,7 @@ FFMPEG_PATH = None
 # Maximum file size in bytes (50 MB)
 MAX_FILE_SIZE = 50 * 1024 * 1024
 
+# To disable it, set CHANNEL_USERNAME to None
 CHANNEL_USERNAME = "@amirabbas_jadidi"
 
 
@@ -71,6 +72,8 @@ def get_message(user_id, message_key):
         return en.messages[message_key]
 
 async def is_user_member(client, user_id):
+    if CHANNEL_USERNAME is None:
+        return True
     try:
         await client.get_chat_member(CHANNEL_USERNAME, user_id)
         return True
@@ -176,6 +179,82 @@ async def change_language(client, message):
         get_message(user_id, "choose_language"),
         reply_markup=language_buttons
     )
+
+@app.on_message(filters.video)
+async def handle_video_message(client, message):
+    user_id = message.from_user.id
+    file_info = message.video
+
+    if not await is_user_member(client, user_id):
+        join_buttons = InlineKeyboardMarkup(
+            [
+                [InlineKeyboardButton(get_message(user_id, "join_channel"), url=f"https://t.me/{CHANNEL_USERNAME.lstrip('@')}")],
+                [InlineKeyboardButton(get_message(user_id, "check_membership"), callback_data="check_membership")]
+            ]
+        )
+        await message.reply_text(get_message(user_id, "must_join"), reply_markup=join_buttons)
+        return
+
+    if file_info:
+        if file_info.file_size <= MAX_FILE_SIZE:
+            start_time = datetime.now()
+
+            input_file, progress_message = await download_with_progress(message, file_info)
+
+            if input_file:
+                status_message = get_message(user_id, "processing_video")
+                await progress_message.edit_text(status_message)
+
+                output_file = input_file.rsplit(".", 1)[0] + "_videomessage.mp4"
+                try:
+                    command = [
+                        FFMPEG_PATH if FFMPEG_PATH else 'ffmpeg',
+                        "-i", input_file,
+                        "-vf", "scale=360:360:force_original_aspect_ratio=decrease,pad=360:360:(ow-iw)/2:(oh-ih)/2",
+                        "-c:v", "libx264",
+                        "-b:v", "512k",
+                        "-c:a", "aac",
+                        "-b:a", "128k",
+                        "-preset", "fast",
+                        "-metadata:s:v", "rotate=0",
+                        "-y", output_file
+                    ]
+                    process = subprocess.run(
+                        command, text=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE
+                    )
+                    if process.returncode != 0:
+                        raise Exception(f"FFmpeg error: {process.stderr}")
+
+                    await client.send_video_note(
+                        chat_id=message.chat.id,
+                        video_note=output_file,
+                        duration=file_info.duration,
+                        reply_to_message_id=message.reply_to_message.message_id if message.reply_to_message else None
+                    )
+
+                    end_time = datetime.now()
+                    total_time = end_time - start_time
+                    formatted_time = str(datetime.fromtimestamp(int(total_time.total_seconds()), timezone.utc).strftime('%H:%M:%S'))
+                    await progress_message.edit_text(
+                        f"{get_message(user_id, 'success')}\n"
+                        f"{get_message(user_id, 'start_time')}: {start_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+                        f"{get_message(user_id, 'end_time')}: {end_time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+                        f"{get_message(user_id, 'total_time')}: {formatted_time}\n"
+                        f"{get_message(user_id, 'voice_sent')}"
+                    )
+
+                    os.remove(input_file)
+                    os.remove(output_file)
+                except Exception as e:
+                    await message.reply_text('error_conversion')
+            else:
+                await progress_message.delete()
+                await message.reply_text(get_message(user_id, 'error_download'))
+        else:
+            await message.reply_text(get_message(user_id, 'file_too_large'))
+    else:
+        await message.reply_text(get_message(user_id, 'invalid_file'))
+
 
 @app.on_message(filters.document | filters.audio | filters.voice)
 async def handle_audio(client, message):
