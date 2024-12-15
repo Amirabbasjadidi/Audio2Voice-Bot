@@ -74,7 +74,7 @@ This is a simple Telegram bot built using the Pyrogram library. The bot allows u
    - If FFmpeg is not found in your system's PATH, you need to change `FFMPEG_PATH` from `None` to the correct path to the FFmpeg executable:
 
      ```python
-     FFMPEG_PATH = "C:\path\to\your\ffmpeg\bin\ffmpeg.exe"
+     FFMPEG_PATH = "C:\\path\\to\\your\\ffmpeg\\bin\\ffmpeg.exe"
      ```
 
    - The path to FFmpeg differs based on your operating system. Ensure you provide the correct path for your environment.
