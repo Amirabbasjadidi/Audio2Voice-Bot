@@ -1,11 +1,14 @@
 # Audio2Voice Bot
 
-This is a simple Telegram bot built using the Pyrogram library. The bot allows users to upload audio files (`.ogg`, `.mp3`, `.wav`), which the bot then converts and sends back as a voice message.
+**Please star this project on GitHub to support me! Your support helps me maintain and improve this project.**
+
+This is a simple Telegram bot built using the Pyrogram library. The bot allows users to upload audio files (`.ogg`, `.mp3`, `.wav`) or videos, which the bot then converts and sends back as a voice message or video message.
 
 ## Features
 
 - Convert audio files (`.ogg`, `.mp3`, `.wav`) and return them as a voice message.
-- The bot supports **18 different languages**
+- Convert videos into video messages.
+- The bot supports **18 different languages**.
 - > The translations are powered by AI. If you are fluent in any of these languages and notice any issues with the phrasing or translation, please feel free to edit and improve it.
 
 ## How to Run
@@ -80,11 +83,11 @@ This is a simple Telegram bot built using the Pyrogram library. The bot allows u
 
 4. **Channel Setup:**
    - You need to set the `CHANNEL_USERNAME` to your desired channel's username, formatted as `"@your_channel_username"` (e.g., `"@amirabbas_jadidi"`).
-   - Make sure to add the bot as an admin to the channel so that it can check user membership properly.
+   - If you don’t want to enforce mandatory joining of a channel, set `CHANNEL_USERNAME` to `None`. In this case, channel membership will not be required.
+   - If a channel is configured, the bot must be added to the channel as an admin to properly check user membership.
 
 5. **Project Updates:**
-   - Future updates to this project may include new features. Additionally, the mandatory join to the channel will become optional, allowing you to disable it if desired.
-
+   - Support for this project is ongoing, and I will continue to add new features and improvements.
 
 ### user_languages.example.json
 
@@ -99,6 +102,15 @@ The `user_languages.json` file is used by the bot to store the preferred languag
 
 This sample file shows the format used to store user IDs and their corresponding language codes. The bot uses this information to send messages in the preferred language of each user.
 
+## Bug Reporting
+
+If you encounter any bugs in the bot and can fix them yourself, feel free to send a pull request. Otherwise, please report the issue through one of the contact methods on my [website](https://amirabbasjadidi.ir/).
+
+## Stay Updated
+
+To follow the latest updates and news about this project, join my Telegram channel: [@amirabbas_jadidi](https://t.me/amirabbas_jadidi).
+
 ## License
 
 This project is licensed under the GPLv3 License. See the [LICENSE](LICENSE) file for details.
+
