@@ -1,5 +1,5 @@
 messages = {
-    "start": "Välkommen! Skicka en ogg-, mp3-, wav-fil eller en video för konvertering (upp till 50 MB).",
+    "start": "Välkommen! Skicka en ogg-, mp3- eller wav-fil eller en video för konvertering (upp till 50 MB).\n Det är bättre om videon har 1:1 (fyrkantiga) mått.",
     "file_received": "Filen har mottagits, konverteringen pågår...",
     "error_conversion": "Ett fel uppstod under filkonverteringen. Försök igen.",
     "error_download": "Ett fel uppstod vid nedladdning av filen. Försök igen.",

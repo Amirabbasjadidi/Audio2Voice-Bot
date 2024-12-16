@@ -7,6 +7,7 @@ import subprocess
 from datetime import datetime, timezone
 from languages import en, fa, es, ru, zh, ar, de, it, tr, fr, ja, ko, hi, pt, hu, ro, nl, sv
 import json
+from uuid import uuid4
 
 api_id = "YOUR_API_ID"
 api_hash = "YOUR_API_HASH"
@@ -86,7 +87,12 @@ async def update_progress(message: Message, progress: int, status_message: str):
 
 async def download_with_progress(message, file_info):
     user_id = message.from_user.id
-    file_name = f"{file_info.file_name.rsplit('.', 1)[0]}_{user_id}_{int(datetime.now().timestamp())}.{file_info.file_name.rsplit('.', 1)[-1]}"
+
+    if not file_info.file_name:
+        file_name = f"random_{uuid4().hex}_{user_id}_{int(datetime.now().timestamp())}.mp4"
+    else:
+        file_name = f"{file_info.file_name.rsplit('.', 1)[0]}_{user_id}_{int(datetime.now().timestamp())}.{file_info.file_name.rsplit('.', 1)[-1]}"
+
     progress_message = await message.reply_text(get_message(user_id, "downloading"))
 
     def progress(current, total):

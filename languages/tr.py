@@ -1,5 +1,5 @@
 messages = {
-    "start": "Hoş geldiniz! Lütfen dönüştürmek için ogg, mp3, wav dosyası veya bir video gönderin (50 MB'a kadar).",
+    "start": "Hoş geldiniz! Lütfen dönüştürmek için bir ogg, mp3 veya wav dosyası ya da bir video gönderin (en fazla 50 MB).\n Videonun 1:1 (kare) boyutlarında olması daha iyidir.",
     "file_received": "Dosya alındı, dönüştürme işlemi devam ediyor...",
     "error_conversion": "Dosya dönüştürme sırasında bir hata oluştu. Lütfen tekrar deneyin.",
     "error_download": "Dosya indirilirken bir hata oluştu. Lütfen tekrar deneyin.",
