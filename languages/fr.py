@@ -1,5 +1,5 @@
 messages = {
-    "start": "Bienvenue ! Veuillez envoyer un fichier ogg, mp3 ou wav, ou une vidéo pour la conversion (jusqu'à 50 Mo).",
+    "start": "Bienvenue! Veuillez envoyer un fichier ogg, mp3 ou wav ou une vidéo pour la conversion (jusqu'à 50 Mo).\n Il est préférable que la vidéo ait des dimensions 1:1 (carré).",
     "file_received": "Fichier reçu, conversion en cours...",
     "error_conversion": "Une erreur s'est produite lors de la conversion du fichier. Veuillez réessayer.",
     "error_download": "Une erreur s'est produite lors du téléchargement du fichier. Veuillez réessayer.",

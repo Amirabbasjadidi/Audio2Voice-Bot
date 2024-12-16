@@ -1,5 +1,5 @@
 messages = {
-    "start": "Bun venit! Te rugăm să trimiți un fișier ogg, mp3 sau wav sau un videoclip pentru a-l converti (până la 50 MB).",
+    "start": "Bun venit! Vă rugăm să trimiteți un fișier ogg, mp3 sau wav sau un videoclip pentru conversie (până la 50 MB).\n Este mai bine dacă videoclipul are dimensiuni 1:1 (pătrat).",
     "file_received": "Fișierul a fost primit, conversia este în curs...",
     "error_conversion": "A apărut o eroare în timpul conversiei fișierului. Te rugăm să încerci din nou.",
     "error_download": "A apărut o eroare la descărcarea fișierului. Te rugăm să încerci din nou.",

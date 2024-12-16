@@ -1,5 +1,5 @@
 messages = {
-    "start": "欢迎！请发送ogg、mp3、wav文件或视频进行转换（最大50 MB）。",
+    "start": "欢迎！请发送一个 ogg、mp3 或 wav 文件或视频进行转换（最大 50 MB）。\n 最好视频的尺寸为 1:1（正方形）。",
     "file_received": "文件已收到，正在转换中...",
     "error_conversion": "文件转换时发生错误。请再试一次。",
     "error_download": "下载文件时发生错误。请再试一次。",

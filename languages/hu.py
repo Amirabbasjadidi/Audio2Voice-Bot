@@ -1,5 +1,5 @@
 messages = {
-    "start": "Üdvözlöm! Kérjük, küldjön egy ogg, mp3 vagy wav fájlt átkonvertálásra (maximum 50 MB).",
+    "start": "Üdvözöljük! Kérjük, küldjön egy ogg, mp3 vagy wav fájlt, vagy egy videót átalakításra (legfeljebb 50 MB).\n Jobb, ha a videó 1:1 (négyzet) arányú.",
     "file_received": "A fájl megérkezett, az átalakítás folyamatban...",
     "error_conversion": "Hiba történt a fájl átalakítása közben. Kérem, próbálja újra.",
     "error_download": "Hiba történt a fájl letöltése közben. Kérem, próbálja újra.",
