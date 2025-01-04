@@ -106,9 +106,6 @@ This sample file shows the format used to store user IDs and their corresponding
 
 If you encounter any bugs in the bot and can fix them yourself, feel free to send a pull request. Otherwise, please report the issue through one of the contact methods on my [website](https://amirabbasjadidi.ir/).
 
-## Stay Updated
-
-To follow the latest updates and news about this project, join my Telegram channel: [@amirabbas_jadidi](https://t.me/amirabbas_jadidi).
 
 ## License
 
