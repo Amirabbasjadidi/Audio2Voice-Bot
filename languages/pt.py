@@ -1,7 +1,7 @@
 messages = {
     "start": "Bem-vindo! Envie um arquivo ogg, mp3 ou wav ou um vídeo para conversão (até 50 MB).\n É melhor se o vídeo tiver dimensões 1:1 (quadrado).",
     "file_received": "Arquivo recebido, conversão em andamento...",
-    "error_conversion": "Ocorreu um erro ao converter o arquivo. Por favor, tente novamente. Calma Calma, como Ronaldo após o gol contra o Barcelona! 😅",
+    "error_conversion": "Ocorreu um erro ao converter o arquivo. Por favor, tente novamente. Calma Calma! 😅",
     "error_download": "Ocorreu um erro ao baixar o arquivo. Por favor, tente novamente.",
     "invalid_file": "Por favor, envie um arquivo válido em ogg, mp3 ou wav, ou um vídeo (até 50 MB).",
     "file_too_large": "O arquivo é grande demais. Por favor, envie um arquivo menor que 50 MB.",
