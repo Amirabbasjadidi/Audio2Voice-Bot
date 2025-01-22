@@ -23,6 +23,9 @@ MAX_FILE_SIZE = 50 * 1024 * 1024
 # To disable it, set CHANNEL_USERNAME to None
 CHANNEL_USERNAME = "@amirabbas_jadidi"
 
+# Set to True for debugging
+SEND_ERROR_MESSAGE = False
+
 
 user_languages = {}
 if os.path.exists("user_languages.json"):
@@ -252,7 +255,13 @@ async def handle_video_message(client, message):
                     os.remove(input_file)
                     os.remove(output_file)
                 except Exception as e:
-                    await message.reply_text('error_conversion')
+                    print(f"Conversion Error: {e}")
+
+                    error_message = get_message(user_id, 'error_conversion')
+                    if SEND_ERROR_MESSAGE:
+                        error_message += f"\nError Details: {e}"
+                    await message.reply_text(error_message)
+
             else:
                 await progress_message.delete()
                 await message.reply_text(get_message(user_id, 'error_download'))
@@ -328,7 +337,12 @@ async def handle_audio(client, message):
                         os.remove(input_file)
                         os.remove(output_file)
                     except Exception as e:
-                        await message.reply_text(get_message(user_id, 'error_conversion'))
+                        print(f"Conversion Error: {e}")
+
+                        error_message = get_message(user_id, 'error_conversion')
+                        if SEND_ERROR_MESSAGE:
+                            error_message += f"\nError Details: {e}"
+                        await message.reply_text(error_message)
                 else:
                     await progress_message.delete()
                     await message.reply_text(get_message(user_id, 'error_download'))
